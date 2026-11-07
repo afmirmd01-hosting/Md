@@ -70,11 +70,31 @@ async function startBot() {
             }
 
             if (cmd === 'menu' || cmd === 'help') {
-                await reply(`*╭─── ${BOT_NAME} ───╮*\n\n*• .ping* - Bot check\n*• .owner* - Malik ka number\n*• .contact* - Contact\n*• .menu* - Ye list\n\n*╰─── ${OWNER_NAME} ───╯*`)
+                await sock.sendMessage(from, {
+                    text: `*╭─── ${BOT_NAME} ───╮*\n\n*• .ping* - Bot check\n*• .owner* - Malik ka number\n*• .contact* - Contact\n*• .menu* - Ye list\n\n*╰─── ${OWNER_NAME} ───╯*`,
+                    footer: 'AF MIR-MD Contact',
+                    templateButtons: [{
+                        index: 1,
+                        urlButton: {
+                            displayText: `📲 WhatsApp: 03701849710`,
+                            url: `https://wa.me/${OWNER_NUMBER}`
+                        }
+                    }]
+                }, { quoted: m })
             }
 
             if (cmd === 'owner' || cmd === 'contact' || cmd === 'malik') {
-                await reply(`*👑 BOT OWNER*\n\n*Naam:* ${OWNER_NAME}\n*Number:* 03701849710\n*WhatsApp:* https://wa.me/${OWNER_NUMBER}\n\nKoi bhi kaam ho to is number par rabta karo.`)
+                await sock.sendMessage(from, {
+                    text: `*👑 BOT OWNER*\n\n*Naam:* ${OWNER_NAME}\n*Number:* 03701849710\n\nKoi bhi kaam ho to neeche diye gaye button se rabta karo.`,
+                    footer: 'AF MIR-MD Contact',
+                    templateButtons: [{
+                        index: 1,
+                        urlButton: {
+                            displayText: `📲 WhatsApp: 03701849710`,
+                            url: `https://wa.me/${OWNER_NUMBER}`
+                        }
+                    }]
+                }, { quoted: m })
             }
 
             if (cmd === 'hi' || cmd === 'hello') {
